@@ -12,9 +12,9 @@ namespace RegressionSimple1
 
         public string Designation { get; set; }
 
-        public double Points { get; set; }
+        public float Points { get; set; }
 
-        public double Price { get; set; }
+        public float Price { get; set; }
 
         public string Province { get; set; }
 

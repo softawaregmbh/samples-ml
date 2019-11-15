@@ -18,10 +18,18 @@ namespace RegressionSimple1
             {
                 var attribute = arffHeader.Attributes[column];
                 var property = properties.FirstOrDefault(p => p.Name.Equals(attribute.Name, StringComparison.CurrentCultureIgnoreCase));
+                var value = instance[column];
 
-                if (property != null)
+                if (property != null && value != null)
                 {
-                    property.SetValue(data, instance[column]);
+                    if (property.PropertyType == typeof(Single) && value.GetType() == typeof(double))
+                    {
+                        property.SetValue(data, Convert.ToSingle(value));
+                    }
+                    else
+                    {
+                        property.SetValue(data, value);
+                    }
                 }
             }
 
