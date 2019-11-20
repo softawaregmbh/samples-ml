@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace InkRecognizerWishList
+namespace InkRecognizerWpf
 {
     public class InkViewModel : NotifyPropertyChanged
     {

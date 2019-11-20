@@ -1,49 +1,43 @@
-﻿<Window x:Class="InkRecognizerWishList.MainWindow"
+﻿<Window x:Class="InkRecognizerWpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:InkRecognizerWishList"
+        xmlns:local="clr-namespace:InkRecognizerWpf"
         xmlns:controls="clr-namespace:Microsoft.Toolkit.Wpf.UI.Controls;assembly=Microsoft.Toolkit.Wpf.UI.Controls"
         mc:Ignorable="d"
         Title="InkRecognizer Demo" Height="450" Width="800"
         Loaded="Window_Loaded">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Border Background="Green" />
-
         <controls:InkCanvas x:Name="inkCanvas" Loaded="inkCanvas_Loaded" >
         </controls:InkCanvas>
-
-        <!--<ItemsControl ItemsSource="{Binding Words}" Background="Yellow">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Canvas />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding RecognizedText}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Canvas.Left" Value="{Binding BoundingBox.Left}" />
-                    <Setter Property="Canvas.Top" Value="{Binding BoundingBox.Top}" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
-        </ItemsControl>-->
-        
         
         <Button Content="Recognize with Cognitive Services InkRecognizer" 
                 Name="btnSend" 
                 Click="btnSend_Click" 
                 Grid.Row="1"
                 Margin="5"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Hidden"  Grid.Column="1" Grid.RowSpan="2" >
+            <ItemsControl ItemsSource="{Binding Words}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding RecognizedText}" FontSize="18" FontWeight="Bold"/>
+                            <ItemsControl ItemsSource="{Binding Alternates}" Foreground="Gray" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>
