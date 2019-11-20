@@ -22,7 +22,11 @@ export class SignatureFieldComponent implements OnInit {
   public recognitionResult: RecognitionResult;
 
   get recognizedItems() {
-    return this.recognitionResult ? this.recognitionResult.recognitionUnits.filter(v => v.category == "inkWord" || v.category == "inkDrawing") : null;
+    if (this.recognitionResult == null) {
+      return;
+    }
+    
+    return this.recognitionResult.recognitionUnits.filter(v => v.category == "inkWord" || v.category == "inkDrawing");
   }
 
   constructor(private httpClient: HttpClient) { }
