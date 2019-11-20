@@ -1,1 +1,13 @@
-<p>signature-field works!</p>
+<div class="signature-field">
+    <signature-pad [options]="signaturePadOptions"></signature-pad>
+</div>
+<div>
+    <button (click)="analyze()">Analyze with InkRecognizer</button>
+</div>
+<div>
+    <ul>
+        <li *ngFor="let group of points">
+            New stroke: {{group.length}} points
+        </li>
+    </ul>
+</div>

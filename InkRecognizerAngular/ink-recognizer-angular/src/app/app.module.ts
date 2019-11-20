@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 import { AppComponent } from './app.component';
 import { SignatureFieldComponent } from './signature-field/signature-field.component';
@@ -10,7 +11,7 @@ import { SignatureFieldComponent } from './signature-field/signature-field.compo
     SignatureFieldComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, SignaturePadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
