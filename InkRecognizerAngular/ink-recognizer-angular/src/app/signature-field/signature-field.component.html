@@ -1,24 +1,17 @@
-<div class="signature-field">
-    <signature-pad [options]="signaturePadOptions"></signature-pad>
+<div class="container signature-field">
+    <div *ngFor="let item of recognizedItems" 
+         class="recognized-area" 
+         [style.left.px]="item.boundingRectangle.topX" 
+         [style.top.px]="item.boundingRectangle.topY"
+         [style.width.px]="item.boundingRectangle.width"
+         [style.height.px]="item.boundingRectangle.height">
+        <span class="recognized-description">
+            {{ item.recognizedText || item.recognizedObject }}
+        </span>
+    </div>
 
+    <signature-pad [options]="signaturePadOptions"></signature-pad>
 </div>
-<div>
-    <button (click)="analyze()">Analyze with InkRecognizer</button>
-</div>
-<!--<div>
-    <ul>
-        <li *ngFor="let stroke of strokes">
-            New stroke: {{stroke.length}} points
-        </li>
-    </ul>
-</div>-->
-<div>
-    <ul *ngIf="recognitionResult">
-        <li *ngFor="let word of recognizedWords">
-            {{word.recognizedText}}
-        </li>
-        <li *ngFor="let drawing of recognizedDrawings">
-            {{drawing.recognizedObject}}
-        </li>
-    </ul>
+<div class="container text-center">
+    <button (click)="analyze()" class="btn btn-primary">Analyze with InkRecognizer</button>
 </div>

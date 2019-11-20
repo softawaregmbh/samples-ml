@@ -1,4 +1,25 @@
 .signature-field {
-    border:1px gray solid;
+    width:800px;
+    height:400px;
+    margin: auto;
     margin-bottom:20px;
+    position:relative;
+}
+
+.recognized-area {
+    position:absolute;
+    border:1px #00BB00 solid;
+}
+
+.recognized-description {
+    position:relative;
+    top:-30px;
+    font-size:13px;
+    color:#00BB00;
+}
+
+::ng-deep {
+    canvas {
+        border:1px #DFDFDF solid;
+    }
 }

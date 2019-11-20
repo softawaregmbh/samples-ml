@@ -1,4 +1,5 @@
 import { RecognitionAlternative } from './recognition-alternative';
+import { BoundingRectangle } from './bounding-rectangle';
 
 export interface RecognitionUnit {
     alternates: RecognitionAlternative[],
@@ -9,5 +10,6 @@ export interface RecognitionUnit {
     recognizedText: string,
     strokeIds: number[],
     confidence: number,
-    recognizedObject: string
+    recognizedObject: string,
+    boundingRectangle: BoundingRectangle
 }

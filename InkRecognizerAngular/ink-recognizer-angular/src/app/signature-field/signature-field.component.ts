@@ -21,12 +21,8 @@ export class SignatureFieldComponent implements OnInit {
 
   public recognitionResult: RecognitionResult;
 
-  get recognizedWords() {
-    return this.recognitionResult.recognitionUnits.filter(v => v.category == "inkWord");
-  }
-
-  get recognizedDrawings() {
-    return this.recognitionResult.recognitionUnits.filter(v => v.category == "inkDrawing");
+  get recognizedItems() {
+    return this.recognitionResult ? this.recognitionResult.recognitionUnits.filter(v => v.category == "inkWord" || v.category == "inkDrawing") : null;
   }
 
   constructor(private httpClient: HttpClient) { }
