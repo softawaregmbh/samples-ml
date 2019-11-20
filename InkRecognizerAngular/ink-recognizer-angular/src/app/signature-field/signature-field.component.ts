@@ -1,17 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SignaturePad, Point } from 'angular2-signaturepad/signature-pad'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RecognitionResult } from '../types/recognition-result';
+import { RecognitionUnit } from '../types/recognition-unit';
 
 @Component({
   selector: 'app-signature-field',
   templateUrl: './signature-field.component.html',
   styleUrls: ['./signature-field.component.scss']
 })
-export class SignatureFieldComponent implements OnInit {
+export class SignatureFieldComponent {
   @ViewChild(SignaturePad, { static: false }) signaturePad: SignaturePad;
 
-  public signaturePadOptions: Object = {
+  public signaturePadOptions = {
     'minWidth': 3,
     'canvasWidth': 800,
     'canvasHeight': 400
@@ -19,25 +20,27 @@ export class SignatureFieldComponent implements OnInit {
   
   public strokes: Point[][];
 
-  public recognitionResult: RecognitionResult;
+  private _recognitionResult : RecognitionResult;
 
-  get recognizedItems() {
-    if (this.recognitionResult == null) {
-      return;
-    }
-    
-    return this.recognitionResult.recognitionUnits.filter(v => v.category == "inkWord" || v.category == "inkDrawing");
+  public get recognitionResult() : RecognitionResult {
+    return this._recognitionResult;
   }
+  public set recognitionResult(v : RecognitionResult) {
+    this._recognitionResult = v;
+    this.recognizedItems = this._recognitionResult.recognitionUnits.filter(v => v.category == "inkWord" || v.category == "inkDrawing");
+  }
+
+  public recognizedItems : RecognitionUnit[]; 
 
   constructor(private httpClient: HttpClient) { }
 
   public analyze(): void {
-    var endpoint = "https://inkrecognizer-demo.cognitiveservices.azure.com";
-    var subscriptionKey = "766a8a28ed424794ab59f638f9dc82ce";
+    const endpoint = "https://inkrecognizer-demo.cognitiveservices.azure.com";
+    const subscriptionKey = "766a8a28ed424794ab59f638f9dc82ce";
 
-    var url = `${endpoint}/inkrecognizer/v1.0-preview/recognize`;
-
-    var content = { 
+    const url = `${endpoint}/inkrecognizer/v1.0-preview/recognize`;
+    
+    const content = { 
       "language": "de-DE",
       "strokes": this.strokes.map((points, index) => {
           return {
@@ -52,10 +55,8 @@ export class SignatureFieldComponent implements OnInit {
       content,
       { headers: new HttpHeaders({ 'Ocp-Apim-Subscription-Key': subscriptionKey }) })
         .toPromise()
-        .then(v => this.recognitionResult = v);    
-  }
-
-  public ngOnInit(): void {
+        .then(v => this.recognitionResult = v)
+        .catch(reason => console.error(reason));    
   }
 
   public ngAfterViewInit(): void {
