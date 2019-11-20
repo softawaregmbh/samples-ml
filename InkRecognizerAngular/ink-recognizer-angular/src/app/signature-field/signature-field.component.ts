@@ -16,7 +16,7 @@ export class SignatureFieldComponent implements OnInit {
     'canvasWidth': 800,
     'canvasHeight': 400
   };
-
+  
   public strokes: Point[][];
 
   public recognitionResult: RecognitionResult;
@@ -57,5 +57,4 @@ export class SignatureFieldComponent implements OnInit {
   public ngAfterViewInit(): void {
     this.strokes = this.signaturePad.toData();
   }
-
 }

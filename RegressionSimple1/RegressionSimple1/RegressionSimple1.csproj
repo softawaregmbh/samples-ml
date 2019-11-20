@@ -3,11 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ArffTools" Version="1.1.2" />
     <PackageReference Include="Microsoft.ML" Version="1.4.0" />
+    <PackageReference Include="PLplot" Version="5.13.7" />
   </ItemGroup>
 
 </Project>
