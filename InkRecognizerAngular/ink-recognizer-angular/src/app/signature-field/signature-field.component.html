@@ -1,13 +1,24 @@
 <div class="signature-field">
     <signature-pad [options]="signaturePadOptions"></signature-pad>
+
 </div>
 <div>
     <button (click)="analyze()">Analyze with InkRecognizer</button>
 </div>
-<div>
+<!--<div>
     <ul>
-        <li *ngFor="let group of points">
-            New stroke: {{group.length}} points
+        <li *ngFor="let stroke of strokes">
+            New stroke: {{stroke.length}} points
+        </li>
+    </ul>
+</div>-->
+<div>
+    <ul *ngIf="recognitionResult">
+        <li *ngFor="let word of recognizedWords">
+            {{word.recognizedText}}
+        </li>
+        <li *ngFor="let drawing of recognizedDrawings">
+            {{drawing.recognizedObject}}
         </li>
     </ul>
 </div>
