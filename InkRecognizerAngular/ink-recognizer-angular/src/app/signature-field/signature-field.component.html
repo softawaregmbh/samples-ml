@@ -1,15 +1,4 @@
 <div class="container signature-field">
-    <div *ngFor="let item of recognizedItems" 
-         class="recognized-area" 
-         [style.left.px]="item.boundingRectangle.topX" 
-         [style.top.px]="item.boundingRectangle.topY"
-         [style.width.px]="item.boundingRectangle.width"
-         [style.height.px]="item.boundingRectangle.height">
-        <span class="recognized-description">
-            {{ item.recognizedText || item.recognizedObject }}
-        </span>
-    </div>
-
     <signature-pad [options]="signaturePadOptions"></signature-pad>
 </div>
 <div class="container text-center">
