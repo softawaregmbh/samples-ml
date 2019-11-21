@@ -23,9 +23,9 @@ public ngAfterViewInit(): void {
 * Key + Endpoint im Portal zeigen
 
 ```ts
-var endpoint = "https://inkrecognizer-demo.cognitiveservices.azure.com";
-var subscriptionKey = "766a8a28ed424794ab59f638f9dc82ce";
-var url = `${endpoint}/inkrecognizer/v1.0-preview/recognize`;
+const endpoint = "https://inkrecognizer-demo.cognitiveservices.azure.com";
+const subscriptionKey = "766a8a28ed424794ab59f638f9dc82ce";
+const url = `${endpoint}/inkrecognizer/v1.0-preview/recognize`;
 ```
 
 * Recognize-Methode in API zeigen (PUT)
@@ -57,20 +57,29 @@ this.httpClient.put<RecognitionResult>(...)
         .then(v => {
             this.recognitionResult = v;
             console.log(this.recognitionResult.recognitionUnits.length);
-        });
+        })
+        .catch(reason => console.error(reason));
+
+
+private _recognitionResult : RecognitionResult;
+
+public get recognitionResult() : RecognitionResult {
+  return this._recognitionResult;
+}
+public set recognitionResult(v : RecognitionResult) {
+  this._recognitionResult = v;
+}
+
 ```
 
 ## Bereiche einzeichnen
 * Filtern auf inkWord und inkDrawing
 
 ```ts
-  get recognizedItems() {
-    if (this.recognitionResult == null) {
-      return;
-    }
-    
-    return this.recognitionResult.recognitionUnits.filter(v => v.category == "inkWord" || v.category == "inkDrawing");
-  }
+public recognizedItems : RecognitionUnit[]; 
+
+// public set recognitionResult(v : RecognitionResult) {
+this.recognizedItems = this._recognitionResult.recognitionUnits.filter(v => v.category == "inkWord" || v.category == "inkDrawing");
 ```
 
 * Anzeige erweitern
