@@ -6,3 +6,6 @@ In this repository I'm starting to collect samples about **Machine Learning** an
 
 * [Use Azure Ink Recognizer in Angular](InkRecognizerAngular/README.md)
 * [Use Azure Ink Recognizer in WPF](InkRecognizerAngular/README.md)
+
+## ML.NET
+* [Install and use Jupyter Notebooks with C#](JupyterDemo/README.md)
