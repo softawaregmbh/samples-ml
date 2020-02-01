@@ -5,7 +5,8 @@ using System.IO;
 using System.Threading.Tasks;
 using CsvHelper;
 using System.Globalization;
-using MLNetTableSoccerML.Model.GoalDifference;
+using GoalDifference = MLNetTableSoccerML.Model.GoalDifference;
+using Winner = MLNetTableSoccerML.Model.Winner;
 
 namespace MLNetTableSoccer.TestConsole
 {
@@ -17,12 +18,14 @@ namespace MLNetTableSoccer.TestConsole
             //    @"D:\softaware\samples-ml\data\softaware.ktool",
             //    @"D:\softaware\samples-ml\data\tablesoccer-export.csv");
 
+            TestWinnerPrediction();
+
             TestGoalDifferencePrediction();
         }
 
-        private static void TestGoalDifferencePrediction()
+        private static void TestWinnerPrediction()
         {
-            var game = new ModelInput()
+            var game = new Winner.ModelInput()
             {
                 Team1GoalKeeper = "Philipp",
                 Team1Striker = "Michael",
@@ -32,7 +35,26 @@ namespace MLNetTableSoccer.TestConsole
                 Hour = 12
             };
 
-            ModelOutput predictionResult = ConsumeModel.Predict(game);
+            Winner.ModelOutput predictionResult = Winner.ConsumeModel.Predict(game);
+
+            Console.WriteLine("========== Winner Prediction ==========");
+            Console.WriteLine($"{game.Team1GoalKeeper} + {game.Team1Striker} vs. {game.Team2GoalKeeper} + {game.Team2Striker}");
+            Console.WriteLine($"Model Result: {predictionResult.Score[0]:P2} : {predictionResult.Score[1]:P2}");
+        }
+
+        private static void TestGoalDifferencePrediction()
+        {
+            var game = new GoalDifference.ModelInput()
+            {
+                Team1GoalKeeper = "Philipp",
+                Team1Striker = "Michael",
+                Team2GoalKeeper = "Roman",
+                Team2Striker = "Markus",
+                Weekday = "Monday",
+                Hour = 12
+            };
+
+            GoalDifference.ModelOutput predictionResult = GoalDifference.ConsumeModel.Predict(game);
 
             Console.WriteLine("========== Goal Difference Prediction ==========");
             Console.WriteLine($"{game.Team1GoalKeeper} + {game.Team1Striker} vs. {game.Team2GoalKeeper} + {game.Team2Striker}");
