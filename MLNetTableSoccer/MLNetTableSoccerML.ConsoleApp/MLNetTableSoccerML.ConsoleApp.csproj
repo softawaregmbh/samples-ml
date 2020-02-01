@@ -8,6 +8,6 @@
     <PackageReference Include="Microsoft.ML" Version="1.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MLNetTableSoccerML.Model\MLNetTableSoccerML.Model.csproj" />
+    <ProjectReference Include="..\MLNetTableSoccerML.Model\MLNetTableSoccerML.Model.Winner.csproj" />
   </ItemGroup>
 </Project>
