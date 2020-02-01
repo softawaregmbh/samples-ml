@@ -8,7 +8,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="MLModel.zip">
+    <None Update="MLModelWinner.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

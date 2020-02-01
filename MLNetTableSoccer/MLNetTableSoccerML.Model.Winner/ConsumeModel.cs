@@ -20,7 +20,7 @@ namespace MLNetTableSoccerML.Model.Winner
             MLContext mlContext = new MLContext();
 
             // Load model & create prediction engine
-            string modelPath = AppDomain.CurrentDomain.BaseDirectory + "MLModel.zip";
+            string modelPath = AppDomain.CurrentDomain.BaseDirectory + "MLModelWinner.zip";
             ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
             var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
 

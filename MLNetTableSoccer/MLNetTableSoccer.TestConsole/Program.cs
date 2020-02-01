@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using CsvHelper;
 using System.Globalization;
+using MLNetTableSoccerML.Model.GoalDifference;
 
 namespace MLNetTableSoccer.TestConsole
 {
@@ -12,10 +13,54 @@ namespace MLNetTableSoccer.TestConsole
     {
         static async Task Main(string[] args)
         {
-            string inputData = @"D:\softaware\samples-ml\data\softaware.ktool";
-            string exportFile = @"D:\softaware\samples-ml\data\tablesoccer-export.csv";
+            //await GenerateCsvFromKickertoolData(
+            //    @"D:\softaware\samples-ml\data\softaware.ktool",
+            //    @"D:\softaware\samples-ml\data\tablesoccer-export.csv");
 
+            TestGoalDifferencePrediction();
+        }
 
+        private static void TestGoalDifferencePrediction()
+        {
+            var game = new ModelInput()
+            {
+                Team1GoalKeeper = "Philipp",
+                Team1Striker = "Michael",
+                Team2GoalKeeper = "Roman",
+                Team2Striker = "Markus",
+                Weekday = "Monday",
+                Hour = 12
+            };
+
+            ModelOutput predictionResult = ConsumeModel.Predict(game);
+
+            Console.WriteLine("========== Goal Difference Prediction ==========");
+            Console.WriteLine($"{game.Team1GoalKeeper} + {game.Team1Striker} vs. {game.Team2GoalKeeper} + {game.Team2Striker}");
+            Console.WriteLine($"Model Result: {predictionResult.Score}");
+
+            int roundedDifference = (int)Math.Round(predictionResult.Score);
+            int goalsTeam1;
+            int goalsTeam2;
+
+            if (predictionResult.Score > 0)
+            {
+                // Team 1 wins
+                goalsTeam1 = 5;
+                goalsTeam2 = 5 - roundedDifference;
+            }
+            else
+            {
+                // Team 2 wins
+                goalsTeam1 = 5 + roundedDifference;
+                goalsTeam2 = 5;
+            }
+
+            Console.WriteLine($"Expected Goals: {goalsTeam1} : {goalsTeam2}");
+        }
+
+        private static async Task GenerateCsvFromKickertoolData(string inputData, string exportFile)
+        {
+            
             string json = await File.ReadAllTextAsync(inputData);
             var tournament = JsonConvert.DeserializeObject<Tournament>(json);
 
@@ -35,7 +80,7 @@ namespace MLNetTableSoccer.TestConsole
                                Team2Striker = GetPlayerName(tournament, team2, 1),
                                GoalsTeam1 = roundResult.team1,
                                GoalsTeam2 = roundResult.team2,
-                               GoalDifference = roundResult.team1-roundResult.team2,
+                               GoalDifference = roundResult.team1 - roundResult.team2,
                                Result = roundResult.team1 > roundResult.team2 ? "1" : "2"
                            }).ToList();
 

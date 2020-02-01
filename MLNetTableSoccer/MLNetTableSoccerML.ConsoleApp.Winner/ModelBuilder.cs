@@ -13,7 +13,7 @@ namespace MLNetTableSoccerML.ConsoleApp.Winner
     public static class ModelBuilder
     {
         private static string TRAIN_DATA_FILEPATH = @"D:\softaware\samples-ml\data\tablesoccer-export.csv";
-        private static string MODEL_FILEPATH = @"../../../../MLNetTableSoccerML.Model/MLModel.zip";
+        private static string MODEL_FILEPATH = @"../../../../MLNetTableSoccerML.Model/MLModelWinner.zip";
 
         // Create MLContext to be shared across the model creation workflow objects 
         // Set a random seed for repeatable/deterministic results across multiple trainings.
