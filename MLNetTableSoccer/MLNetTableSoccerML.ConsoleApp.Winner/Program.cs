@@ -4,9 +4,9 @@ using System;
 using System.IO;
 using System.Linq;
 using Microsoft.ML;
-using MLNetTableSoccerML.Model.GoalDifference;
+using MLNetTableSoccerML.Model.Winner;
 
-namespace MLNetTableSoccerML.ConsoleApp.GoalDifference
+namespace MLNetTableSoccerML.ConsoleApp.Winner
 {
     class Program
     {
@@ -21,7 +21,7 @@ namespace MLNetTableSoccerML.ConsoleApp.GoalDifference
             // Make a single prediction on the sample data and print results
             ModelOutput predictionResult = ConsumeModel.Predict(sampleData);
 
-            Console.WriteLine("Using model to make single prediction -- Comparing actual GoalDifference with predicted GoalDifference from sample data...\n\n");
+            Console.WriteLine("Using model to make single prediction -- Comparing actual Result with predicted Result from sample data...\n\n");
             Console.WriteLine($"Hour: {sampleData.Hour}");
             Console.WriteLine($"Weekday: {sampleData.Weekday}");
             Console.WriteLine($"Team1GoalKeeper: {sampleData.Team1GoalKeeper}");
@@ -30,8 +30,8 @@ namespace MLNetTableSoccerML.ConsoleApp.GoalDifference
             Console.WriteLine($"Team2Striker: {sampleData.Team2Striker}");
             Console.WriteLine($"GoalsTeam1: {sampleData.GoalsTeam1}");
             Console.WriteLine($"GoalsTeam2: {sampleData.GoalsTeam2}");
-            Console.WriteLine($"Result: {sampleData.Result}");
-            Console.WriteLine($"\n\nActual GoalDifference: {sampleData.GoalDifference} \nPredicted GoalDifference: {predictionResult.Score}\n\n");
+            Console.WriteLine($"GoalDifference: {sampleData.GoalDifference}");
+            Console.WriteLine($"\n\nActual Result: {sampleData.Result} \nPredicted Result value {predictionResult.Prediction} \nPredicted Result scores: [{String.Join(",", predictionResult.Score)}]\n\n");
             Console.WriteLine("=============== End of process, hit any key to finish ===============");
             Console.ReadKey();
         }

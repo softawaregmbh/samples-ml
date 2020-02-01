@@ -2,7 +2,7 @@
 
 using Microsoft.ML.Data;
 
-namespace MLNetTableSoccerML.Model.GoalDifference
+namespace MLNetTableSoccerML.Model.Winner
 {
     public class ModelInput
     {

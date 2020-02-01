@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.ML;
+using MLNetTableSoccerML.Model;
 
-namespace MLNetTableSoccerML.Model.GoalDifference
+namespace MLNetTableSoccerML.Model.Winner
 {
     public class ConsumeModel
     {
