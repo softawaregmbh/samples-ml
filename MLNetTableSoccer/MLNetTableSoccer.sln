@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLNetTableSoccer.TestConsole", "MLNetTableSoccer.TestConsole\MLNetTableSoccer.TestConsole.csproj", "{235EEB1C-1274-428A-9559-72708100D3A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLNetTableSoccerML.Model.Winner", "MLNetTableSoccerML.Model.Winner\MLNetTableSoccerML.Model.Winner.csproj", "{E9B210AC-6651-4102-A062-F1E23A20992C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLNetTableSoccerML.ConsoleApp.Winner", "MLNetTableSoccerML.ConsoleApp.Winner\MLNetTableSoccerML.ConsoleApp.Winner.csproj", "{0A7C3673-DB23-4A81-BEFD-996A08390E29}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLNetTableSoccerML.Model.GoalDifference", "MLNetTableSoccerML.Model\MLNetTableSoccerML.Model.GoalDifference.csproj", "{90F54CB4-9BAE-458B-83BC-F8AFBD6AA002}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLNetTableSoccerML.ConsoleApp.GoalDifference", "MLNetTableSoccerML.ConsoleApp\MLNetTableSoccerML.ConsoleApp.GoalDifference.csproj", "{7109E18F-D284-4709-BCC4-6792FA737F75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PredictWinner", "PredictWinner", "{984F47E9-642E-49E5-BE38-B0AD6DE43240}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PredictGoalDifference", "PredictGoalDifference", "{318388AE-0D5C-43A5-B66F-53C170D41956}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{235EEB1C-1274-428A-9559-72708100D3A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{235EEB1C-1274-428A-9559-72708100D3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{235EEB1C-1274-428A-9559-72708100D3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{235EEB1C-1274-428A-9559-72708100D3A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9B210AC-6651-4102-A062-F1E23A20992C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9B210AC-6651-4102-A062-F1E23A20992C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9B210AC-6651-4102-A062-F1E23A20992C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9B210AC-6651-4102-A062-F1E23A20992C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A7C3673-DB23-4A81-BEFD-996A08390E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7C3673-DB23-4A81-BEFD-996A08390E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7C3673-DB23-4A81-BEFD-996A08390E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7C3673-DB23-4A81-BEFD-996A08390E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90F54CB4-9BAE-458B-83BC-F8AFBD6AA002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90F54CB4-9BAE-458B-83BC-F8AFBD6AA002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90F54CB4-9BAE-458B-83BC-F8AFBD6AA002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90F54CB4-9BAE-458B-83BC-F8AFBD6AA002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7109E18F-D284-4709-BCC4-6792FA737F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7109E18F-D284-4709-BCC4-6792FA737F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7109E18F-D284-4709-BCC4-6792FA737F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7109E18F-D284-4709-BCC4-6792FA737F75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E9B210AC-6651-4102-A062-F1E23A20992C} = {984F47E9-642E-49E5-BE38-B0AD6DE43240}
+		{0A7C3673-DB23-4A81-BEFD-996A08390E29} = {984F47E9-642E-49E5-BE38-B0AD6DE43240}
+		{90F54CB4-9BAE-458B-83BC-F8AFBD6AA002} = {318388AE-0D5C-43A5-B66F-53C170D41956}
+		{7109E18F-D284-4709-BCC4-6792FA737F75} = {318388AE-0D5C-43A5-B66F-53C170D41956}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B660B1D3-96F6-4968-A110-AEF0CD5C5D7E}
+	EndGlobalSection
+EndGlobal
