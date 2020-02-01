@@ -3,6 +3,8 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
+using CsvHelper;
+using System.Globalization;
 
 namespace MLNetTableSoccer.TestConsole
 {
@@ -11,7 +13,7 @@ namespace MLNetTableSoccer.TestConsole
         static async Task Main(string[] args)
         {
             string inputData = @"D:\softaware\samples-ml\data\softaware.ktool";
-            string exportFile = @"D:\softaware\samples-ml\data\tablesoccer-export.json";
+            string exportFile = @"D:\softaware\samples-ml\data\tablesoccer-export.csv";
 
 
             string json = await File.ReadAllTextAsync(inputData);
@@ -37,9 +39,11 @@ namespace MLNetTableSoccer.TestConsole
                                Result = roundResult.team1 > roundResult.team2 ? "1" : "2"
                            }).ToList();
 
-            var exportJson = JsonConvert.SerializeObject(results);
-
-            await File.WriteAllTextAsync(exportFile, exportJson);
+            using (var writer = new StreamWriter(exportFile))
+            using (var csv = new CsvWriter(writer, new CultureInfo("en-US")))
+            {
+                await csv.WriteRecordsAsync(results);
+            }
         }
 
         private static string GetPlayerName(Tournament tournament, Team team, int playerIndex)
