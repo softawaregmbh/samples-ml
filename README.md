@@ -10,3 +10,4 @@ In this repository I'm starting to collect samples about **Machine Learning** an
 ## ML.NET
 * [Install and use Jupyter Notebooks with C#](JupyterDemo)
 * [Create a machine learning Model with AutoML](MLNetTableSoccer)
+* [Using regression algorithms with ML.NET](MLNetCallRegression)
